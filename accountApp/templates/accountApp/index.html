@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>               <!--this is [name] not route name-->
+<form action="{% url 'personGreet' %}" method="post">
+    {%csrf_token%}
+    <h1>boop</h1>
+      <!--listing the complete list of all accounts-->
+    {% for account in AccountList %}
+        <p>
+            Person:{{account.name}} <br> Checking:{{account.checking}}
+            <br> Savings:{{account.savings}} <br> Opened:{{account.dateTimeOpen}}
+            <a href="{%url 'add5Dollars' account.id %}">add</a>
+        </p>
+    {%endfor%}
+
+    <input type="text" name="personName">
+    <button>Submit</button>
+</form>
+</body>
+</html>
